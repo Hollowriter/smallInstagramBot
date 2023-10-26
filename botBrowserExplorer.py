@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 def access_account():
+	global driver
 	options = Options()
 	options.add_experimental_option("detach", True)
 	driver = webdriver.Chrome(options=options)
@@ -11,10 +12,21 @@ def access_account():
 	sleep(5)
 	user_name = driver.find_element(By.CSS_SELECTOR, "input[name='username']")
 	pass_word = driver.find_element(By.CSS_SELECTOR, "input[name='password']")
-	user_name.send_keys("hollowriter")
-	pass_word.send_keys("Aspartamo1")
+	user_name.send_keys("")
+	pass_word.send_keys("")
 	sleep(4)
 	login_link = driver.find_element(By.XPATH, "//button[@type='submit']")
 	login_link.click()
+	sleep(10)
+	sign = driver.find_element(By.CLASS_NAME, "_ac8f")
+	sign.click()
+	sleep(10)
+	notifs = driver.find_element(By.CLASS_NAME, "_a9-- _a9_1") # try to find the notifications button to click
+	notifs.click()
+	sleep(10)
+	pic = driver.find_element(By.CLASS_NAME, "kIKUG")
+	pic.click()
+	#driver.get('https://www.instagram.com/hollowriter/following/')
+	#sleep(5)
 
 access_account()
